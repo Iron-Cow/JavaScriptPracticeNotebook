@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+<body>
+    <link href="{% static 'css/sketch/language_markup.css' %}" rel="stylesheet" type="text/css">
+
+    {% block content %}
+    {% endblock content %}
+
+    <script src="{% static 'js/sketch/rainbow-custom.min.js' %}"></script>
+</body>
+</html>

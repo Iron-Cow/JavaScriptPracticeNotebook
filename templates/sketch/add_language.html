@@ -1,0 +1,43 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}
+    Tasks
+{% endblock title %}
+{% block content %}
+   <form method="post" enctype="multipart/form-data">{% csrf_token %}
+{% for field in form%}
+    <h4>
+        {{ field.label_tag }}<br>
+        <pre><code>{{ field }}</code></pre>
+    </h4>
+{% endfor %}
+       <style>
+            #id_name{
+                width: 25%;
+            }
+
+       </style>
+
+    <input type='submit' class="btn btn-lg btn-primary" value='Add language' />
+</form>
+
+    {% for language in all_languages %}
+        <div style="border: 2px dotted black; width: 50%; margin: 5px">
+            {{ language.name }}<br>
+        </div>
+    {% endfor %}
+    <div name="test-textarea" id="test-textarea" cols="30" rows="10"></div>
+
+
+<script src="../../static/codemirror/lib/codemirror.js"></script>
+<link rel="stylesheet" href="../../static/codemirror/lib/codemirror.css">
+<script src="../../static/codemirror/mode/javascript/javascript.js"></script>
+    <script>
+{#var myCodeMirror = CodeMirror(document.body);#}
+var myCodeMirror = CodeMirror(document.getElementById('test-textarea'), {
+  value: "function myScript(){return 100;}\n",
+  mode:  "javascript"
+});
+    </script>
+{% endblock content %}

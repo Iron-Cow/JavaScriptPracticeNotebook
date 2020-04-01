@@ -1,0 +1,40 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}
+    Tasks
+{% endblock title %}
+{% block content %}
+   <form method="post" enctype="multipart/form-data">{% csrf_token %}
+{% for field in form%}
+    <h4>
+        {{ field.label_tag }}
+        <p>{{ field }}</p>
+    </h4>
+{% endfor %}
+       <style>
+            #id_title{
+                width: 25%;
+            }
+            #id_problemtext{
+                width: 25%;
+            }
+            #id_solutioncode{
+                width: 25%;
+            }
+
+       </style>
+
+    <input type='submit' class="btn btn-lg btn-primary" value='Create Post' />
+</form>
+
+    {% for problem in all_tasks%}
+        <div style="border: 2px dotted black; width: 50%; margin: 5px">
+            {{ problem.title }}<br>
+            {{ problem.problemtext | linebreaks }}<br>
+            <pre >
+                <code data-language="css">{{ problem.solutioncode }}</code>
+            </pre><br>
+        </div>
+    {% endfor %}
+{% endblock content %}
