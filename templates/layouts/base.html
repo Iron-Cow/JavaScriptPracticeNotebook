@@ -6,11 +6,15 @@
     <title>{% block title %}{% endblock title %}</title>
 </head>
 <body>
-    <link href="{% static 'css/sketch/language_markup.css' %}" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
 
-    {% block content %}
-    {% endblock content %}
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link href="{% static 'css/sketch/language_markup.css' %}" rel="stylesheet" type="text/css">
+    <div class="container">
+        {% block content %}
+        {% endblock content %}
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="{% static 'js/sketch/rainbow-custom.min.js' %}"></script>
 </body>
 </html>

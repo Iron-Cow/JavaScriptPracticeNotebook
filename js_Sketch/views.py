@@ -37,3 +37,7 @@ def add_language(request):
         if not all_languages.filter(name=form.data['name'].lower()).exists():
             form.save()
         return redirect('/add_language')
+
+
+def js_editor(request):
+    return render(request, 'sketch/codemirrortest.html')

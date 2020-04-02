@@ -25,6 +25,7 @@
 
        </style>
 
+
     <input type='submit' class="btn btn-lg btn-primary" value='Create Post' />
 </form>
 
@@ -33,8 +34,9 @@
             {{ problem.title }}<br>
             {{ problem.problemtext | linebreaks }}<br>
             <pre >
-                <code data-language="css">{{ problem.solutioncode }}</code>
+                <code data-language="{{ problem.language }}">{{ problem.solutioncode }}</code>
             </pre><br>
         </div>
     {% endfor %}
+
 {% endblock content %}

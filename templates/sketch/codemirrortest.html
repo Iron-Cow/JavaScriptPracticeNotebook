@@ -1,0 +1,40 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}
+    JS Editor
+{% endblock title %}
+{% block content %}
+
+
+    <link rel="stylesheet" href="../../static/codemirror/lib/codemirror.css">
+    <div class="codemirror-textarea" id="codemirror-textarea" ></div>
+    <button id="run-button">Run</button>
+
+<script src="../../static/codemirror/lib/codemirror.js"></script>
+<script src="../../static/codemirror/mode/javascript/javascript.js"></script>
+    <script>
+
+    var myCodeMirror = CodeMirror($('#codemirror-textarea')[0], {
+        value: "function myScript(){return 100;};\nfunction Al(){alert('hello')};\nAl();",
+        mode:  "javascript",
+        lineNumbers: true,
+        atomic: true,
+
+    });
+    $('#run-button').click(function () {
+        let code = $('.CodeMirror-code').text();
+        let execute = new Function(code);
+        execute()
+    });
+
+
+
+    </script>
+
+    <style>
+        body{
+            background-color: grey;
+        }
+    </style>
+{% endblock content %}
