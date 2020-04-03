@@ -1,20 +1,76 @@
-<!DOCTYPE html>
+<!doctype html>
 {% load static %}
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="JS training website">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.6">
     <title>{% block title %}{% endblock title %}</title>
-</head>
-<body>
-    <script src="https://code.jquery.com/jquery-latest.js"></script>
 
+    <!-- Bootstrap core CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<link href="{% static 'css/sketch/language_markup.css' %}" rel="stylesheet" type="text/css">
-    <div class="container">
-        {% block content %}
-        {% endblock content %}
-    </div>
+
+    <!-- Favicons -->
+
+<meta name="theme-color" content="#563d7c">
+
+
+
+    <!-- Custom styles for this template -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link href="{% static 'css/sketch/language_markup.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'css/sketch/cover.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="../../static/codemirror/lib/codemirror.css">
+        <link rel="stylesheet" href="../../static/codemirror/theme/material-darker.css">
+  </head>
+  <body>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script src="../../static/codemirror/lib/codemirror.js"></script>
+    <script src="../../static/codemirror/mode/javascript/javascript.js"></script>
+    <script src="../../static/codemirror/mode/python/python.js"></script>
+    <script src="../../static/codemirror/mode/css/css.js"></script>
+    <script src="../../static/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="../../static/codemirror/mode/xml/xml.js"></script>
+    <script src="../../static/codemirror/addon/hint/show-hint.css"></script>
+    <script src="../../static/codemirror/addon/hint/show-hint.js"></script>
+    <script src="../../static/codemirror/addon/edit/closetag.js"></script>
+
+    <link rel="stylesheet" href="../../static/codemirror/lib/codemirror.css">
+
+
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    {% include 'layouts/header.html' %}
+
+
+  <main role="main" class="">
+      {% block content %}
+        {% endblock content %}
+
+  </main>
+
+  <footer class="mastfoot mt-auto">
+    <div class="inner">
+      <p>Website made by <strong style="color: gainsboro">IronCow</strong> for community 😘</p>
+    </div>
+  </footer>
+</div>
+    <script>
+    function heightfix(){
+    let winHeight = window.innerHeight    ||
+    document.documentElement.clientHeight ||
+    document.body.clientHeight;
+    let pageHeight = $('main').height();
+    if (pageHeight < winHeight) {
+    $('body').css('height', winHeight)
+    };
+    };
+        heightfix();
+        {#$('body').change( heightfix());#}
+    </script>
     <script src="{% static 'js/sketch/rainbow-custom.min.js' %}"></script>
 </body>
 </html>
