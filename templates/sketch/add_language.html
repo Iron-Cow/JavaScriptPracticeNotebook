@@ -12,12 +12,12 @@
     {% for field in form%}
         <h4>
             {{ field.label_tag }}<br>
-            <pre><code>{{ field }}</code></pre>
+            {{ field }}
         </h4>
     {% endfor %}
        <style>
             #id_name{
-                width: 25%;
+                width: 100%;
             }
 
        </style>
@@ -27,6 +27,7 @@
 
     {% for language in all_languages %}
         <div style="border: 2px dotted black; width: 50%; margin: 5px">
+            <a href="/delete_language/{{ language.id }}" class="btn btn-danger">✘</a>
             {{ language.name }}<br>
         </div>
     {% endfor %}

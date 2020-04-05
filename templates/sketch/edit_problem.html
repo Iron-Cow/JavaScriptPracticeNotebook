@@ -1,0 +1,65 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}
+    Edit problem
+{% endblock title %}
+{% block content %}
+
+    <form class="" id="form-for-code" method="post" enctype="multipart/form-data">{% csrf_token %}
+{% for field in form %}
+    <h4>
+        {{ field.label_tag }}
+        <p>{{ field }}</p>
+    </h4>
+{% endfor %}
+       <style>
+            #id_title{
+                width: 100%;
+            }
+            #id_problemtext{
+                width: 100%;
+            }
+
+
+
+       </style>
+
+
+    <input type='submit' class="btn btn-lg btn-primary run-button" value='Edit problem' />
+
+</form>
+
+    
+
+    <script>
+        $('#id_problemtext').attr("rows", 5);
+        $('#id_solutioncode').addClass("codemirror-textarea");
+    function codemirror(mode='{{ problem.language.name }}'){
+        return CodeMirror.fromTextArea($('.codemirror-textarea')[0], {
+            mode: `${mode}`,
+            lineNumbers: true,
+           theme: 'material-darker',
+            autoCloseTags: true,
+
+
+
+        });
+    };
+    let myCodeMirror = codemirror();
+    $('.run-button').click(function () {
+         myCodeMirror.toTextArea();
+    });
+    $('#id_language').change(function () {
+        myCodeMirror.toTextArea();
+        let choice = ($('#id_language').children("option:selected").text());
+        if (choice === '---------'){
+            choice = 'javascript';
+        }else if (choice === 'html'){
+            choice = 'htmlmixed';
+        }
+        myCodeMirror = codemirror(choice);
+
+    });
+    </script>
+{% endblock content %}
