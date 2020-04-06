@@ -1,0 +1,36 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}
+    Profile
+{% endblock title %}
+
+{% block content %}
+{#    Info#}
+    <h1>{{ user.username }}</h1>
+    {% if user.is_superuser %}
+        <small style="color: red">Superuser</small>
+    {% endif %}
+
+    {% if not user.is_active %}
+        <div class="border border-1 border-warning text-warning p-1">
+
+            Hello! Thank you for join :). Your account <strong style="color: red">is not activated</strong> yet. <br>
+            It is made to prevent spam and insure users comfort. <br>
+            Please, look around this beautiful website and wait for Admin authorization. <br>
+            If you feel nervous or have an emergency needs on the website - please <a href="https://t.me/jssketch">contact
+            me</a>.
+        </div>
+    {% endif %}
+{#    Feedback#}
+    <h3>Leave feedback</h3>
+{#    Buttons#}
+    <button class="btn btn-success m-1" >Feedback</button>
+    <a class="btn btn-success m-1" href="/problems_list?q={{ user.username }}">My code</a>
+    {% if user.is_superuser %}
+        <a class="btn btn-success m-1" >Feedback list</a>
+        <a class="btn btn-success m-1" href="/account/users">Users <span style="color: orangered">({{ new_users.count }})</span></a>
+    {% endif %}
+
+{% endblock content %}
+

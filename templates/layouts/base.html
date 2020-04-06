@@ -47,6 +47,32 @@
 
 
   <main role="main" class="">
+            <!-- messages alert box -->
+          <div class="messages">
+              {% if messages %}
+                  <div class="modal fade" id="myModal">
+                      <div class="modal-dialog modal-sm">
+                          {% for message in messages %}
+                              <strong class="text-light" style="text-shadow: blue 1px 1px"
+                                      href="">{{ message }}</strong>
+                              <br>
+                          {% endfor %}
+                      </div>
+                      <script>
+                          $(document).ready(function () {
+                              setTimeout(function () {
+                                  $('#myModal').modal('show');
+                              }, 300);
+                              setTimeout(function () {
+                                  $('#myModal').modal('hide');
+                              }, 30000);
+                          })
+                      </script>
+                  </div>
+              {% endif %}
+          </div>
+          <!-- End messages -->
+
       {% block content %}
         {% endblock content %}
 
@@ -65,10 +91,11 @@
     document.body.clientHeight;
     let pageHeight = $('main').height();
     if (pageHeight < winHeight) {
-    $('body').css('height', winHeight)
+    $('body').css('height', winHeight);
+    setTimeout(heightfix, 500);
     };
     };
-        heightfix();
+    heightfix();
         {#$('body').change( heightfix());#}
     </script>
     <script src="{% static 'js/sketch/rainbow-custom.min.js' %}"></script>

@@ -15,17 +15,17 @@
         {% for problem in all_tasks %}
 
             <div style="border: 2px dotted black; width: 100%; margin: 5px">
-                <div class="row">
-                    <div class="text-danger col-lg-8">
+                <div class="row m-1">
+                    <div class="text-danger col-lg-8 my-1">
                         <a data-toggle="collapse" href="#problem-code-{{ problem.id }}"
                                                  role="button" aria-expanded="false" aria-controls="collapseExample"
                                                  class="btn btn-warning mr-1">{{ problem.title }}</a>
-                        ({{ problem.language }})
+                        ({{ problem.language }}) <span class="text-secondary">/ {{ problem.user.username }}</span>
                     </div>
-                    <div>
+                    <div class="col-lg-4">
                         {% if user.is_superuser or user == problem.user %}
                             <a class="btn btn-outline-secondary" href="/problem/{{ problem.id }}/edit">Edit</a>
-                            <a class="btn btn-outline-danger" href="/problem/{{ problem.id }}/delete">Delete</a>
+                            <a class="btn btn-outline-danger " href="/problem/{{ problem.id }}/delete">Delete</a>
                         {% endif %}
 
                     </div>

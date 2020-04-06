@@ -25,4 +25,4 @@ class Problem(models.Model):
         return f'{self.id}. {self.title}'
 
     class Meta:
-        ordering = ["id", ]
+        ordering = ["-id", ]

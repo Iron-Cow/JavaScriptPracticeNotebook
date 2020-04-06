@@ -1,10 +1,190 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}
+    Register
+{% endblock title %}
+
+{% block content %}
+     <!--Reg form-->
+    <div class="container" style="text-align: center; margin-top: 10px">
+        <h1 class="text-light">Registration form</h1>
+        <form id="form1" method="post" action="/account/signup" onsubmit="return false">
+            {% csrf_token %}
+
+            <div class="form-group">
+            Login:<br>
+            <input class="form-control" type="text" id ="login" name="login" required/>
+            <small id="login_err" class="err"></small>
+
+            </div>
+
+            <div class="form-group">
+            Password:<br>
+            <input class="form-control" type="password" id ="pass1" name="pass1" required/>
+            <small id="pass1_err" class="err"></small>
+            </div>
+
+            <div class="form-group">
+            Password confirmation:<br>
+            <input class="form-control" type="password" id ="pass2" name="pass2" required/>
+            <small id='pass2_err' class="err"></small>
+            </div>
+
+            <div class="form-group">
+            E-Mail:<br>
+            <input class="form-control" type="email" id ="email" name="email" required/>
+            <small id="email_err" class="err"></small>
+           </div>
+
+            <p>
+                <input class="btn btn-success m-1" id="submit"  type="submit" value="Confirm" />
+                <input class="btn btn-secondary m-1" type="reset" value="Clear" />
+            </p>
+
+        </form>
+    </div>
+
+     <style>
+        #form1 {
+            width: 100%;
+            border: 1px solid silver;
+            border-radius: 15px;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 2px 2px silver, 1px 0 10px silver;
+            text-align: center;
+        }
+    input {
+            width: 20%;
+            text-align: center;
+        }
+     .err{
+         color: orangered;
+     }
+
+    </style>
+
+    <script>
+
+        $(document).ready(function () {
+
+        let valid_login = false;
+        let valid_pass1 = false;
+        let valid_pass2 = false;
+        let valid_email = false;
+
+        let regExp1 = /^[a-zA-Z_][a-zA-Z0-9_]{5,15}$/;
+        let regExp_password = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[A-Za-z0-9_\-]{8,}$/;
+        let regExp_email = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
+
+
+        // login field validation
+
+        $('#login').change(function () {
+            let _login = $(this).val();
+            if (regExp1.test(_login)) {$.ajax({
+                url:"/account/ajax_reg",
+                data:"login=" + _login,
+                success:function(result) {
+                    if (result.mess === 'occupied') {
+                        $('#login_err').text('Username already taken!');
+                        valid_login = false
+                    } else {
+                        $('#login_err').text('');
+                        valid_login = true
+                    }
+                }
+            });
+            }  else {
+                $('#login_err').text('Login should be in range 6-15 symbols length (only alpha-numeric) and start from letter.');
+                valid_login = false;
+            }
+        });
+
+        $('#login').focus(function () {
+            $('#login_err').text('');
+        });
+// pass1 field validation
+        $('#pass1').blur(function () {
+            let _pass1 = $(this).val();
+            if (regExp_password.test(_pass1)) {
+                $('#pass1_err').text('');
+                valid_pass1 = true;
+            } else {
+                $('#pass1_err').text('Password should be 8+ symbols length and contain big, small letter and digit');
+                valid_pass1 = false;
+            }
+        });
+
+        $('#pass1').focus(function () {
+            $('#pass1_err').text('');
+        });
+
+    // pass2 field validation
+        $('#pass2').blur(function () {
+                let _pass1 = $('#pass1').val();
+                let _pass2 = $('#pass2').val();
+                if (_pass1 == _pass2) {
+                $('#pass2_err').text('');
+                valid_pass2 = true;
+            } else {
+                $('#pass2_err').text('Passwords do not match!');
+                valid_pass2 = false;
+            }
+        });
+
+        $('#pass2').focus(function () {
+            $('#pass2_err').text('');
+        });
+
+     // email field validation
+        $('#email').blur(function () {
+            $(this).val($(this).val().toLowerCase());
+            let _email = $(this).val();
+            if (regExp_email.test(_email)) {
+                $('#email_err').text('');
+                valid_email = true;
+            } else {
+                $('#email_err').text('Please recheck email field (example@mailhost.com)');
+                valid_email = false;
+            }
+        });
+
+   // submit btn field
+        $('#submit').click(function () {
+            $('#login').blur();
+            $('#pass1').blur();
+            $('#pass1').blur();
+            $('#email').blur();
+            if (valid_login  && valid_pass1 && valid_pass2 && valid_email ) {
+                {#alert('ok');#}
+                $('#form1').attr('onsubmit', 'return true');
+            } else {
+                $('#form1').attr('onsubmit', 'return false');
+                alert('Form is incorrect! \nData sending interrupted!');
+            }
+        });
+
+    // reset button
+    // ---------------------------
+    $('#reset').click(function (event) {
+        event.preventDefault();
+
+        $('#login_err').text('');
+        $('#pass1_err').text('');
+        $('#pass2_err').text('');
+        $('#email_err').text('');
+
+        $('#login').val('');
+        $('#pass1').val('');
+        $('#pass2').val('');
+        $('#email').val('');
+    });
+
+
+
+    });
+    </script>
+
+{% endblock content %}

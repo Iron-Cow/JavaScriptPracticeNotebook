@@ -1,10 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}
+    Log in
+{% endblock title %}
+
+{% block content %}
+     <!--Reg form-->
+    <div class="container" style="text-align: center; margin-top: 10px">
+        <h1 class="text-light">Welcome</h1>
+        <form id="form1" method="post" action="/account/signin" onsubmit="return true">
+            {% csrf_token %}
+
+            <div class="form-group">
+            Login:<br>
+            <input class="form-control" type="text" id ="login" name="login" required/>
+            <small id="login_err" class="err"></small>
+
+            </div>
+
+            <div class="form-group">
+            Password:<br>
+            <input class="form-control" type="password" id ="pass1" name="pass" required/>
+            <small id="pass1_err" class="err"></small>
+            </div>
+
+            <p>
+                <input class="btn btn-success m-1" id="submit"  type="submit" value="Confirm" />
+                <input class="btn btn-secondary m-1" type="reset" value="Clear" />
+            </p>
+
+        </form>
+    </div>
+
+     <style>
+        #form1 {
+            width: 100%;
+            border: 1px solid silver;
+            border-radius: 15px;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 2px 2px silver, 1px 0 10px silver;
+            text-align: center;
+        }
+    input {
+            width: 20%;
+            text-align: center;
+        }
+     .err{
+         color: orangered;
+     }
+
+    </style>
+
+
+
+{% endblock content %}
