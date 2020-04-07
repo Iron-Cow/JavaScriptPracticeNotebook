@@ -1,0 +1,39 @@
+[{
+    "model": "account.Usersetup",
+    "pk": 0,
+    "fields": {
+      "registered_user_daily_posts": 20,
+      "registered_user_feedback_limit": 10,
+      "unregistered_user_daily_posts": 0,
+      "unregistered_user_feedback_limit": 2
+    }
+  },
+ {
+    "model": "js_Sketch.language",
+    "pk": 0,
+    "fields": {
+      "name": "javascript"
+    }
+  },
+   {
+    "model": "js_Sketch.language",
+    "pk": 1,
+    "fields": {
+      "name": "python"
+    }
+  },
+  {
+    "model": "js_Sketch.language",
+    "pk": 2,
+    "fields": {
+      "name": "css"
+    }
+  },
+  {
+    "model": "js_Sketch.language",
+    "pk": 3,
+    "fields": {
+      "name": "html"
+    }
+  }
+]

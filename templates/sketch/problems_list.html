@@ -54,30 +54,32 @@
     </span>
     </div><br>
     </div>
-<button class="btn btn-secondary" data-toggle="collapse" data-target=".multi-collapse" role="button" aria-expanded="false" aria-controls="form-for-code problemslist">Add code</button>
-   <form class="collapse multi-collapse" id="form-for-code" method="post" enctype="multipart/form-data">{% csrf_token %}
-{% for field in form%}
-    <h4>
-        {{ field.label_tag }}
-        <p>{{ field }}</p>
-    </h4>
-{% endfor %}
-       <style>
-            #id_title{
-                width: 100%;
-            }
-            #id_problemtext{
-                width: 100%;
-            }
+    {% if user.is_authenticated %}
+        <button class="btn btn-secondary" data-toggle="collapse" data-target=".multi-collapse" role="button" aria-expanded="false" aria-controls="form-for-code problemslist">Add code</button>
+        <form class="collapse multi-collapse" id="form-for-code" method="post" enctype="multipart/form-data">{% csrf_token %}
+            {% for field in form%}
+                <h4>
+                    {{ field.label_tag }}
+                    <p>{{ field }}</p>
+                </h4>
+            {% endfor %}
+            <style>
+                #id_title{
+                    width: 100%;
+                }
+                #id_problemtext{
+                    width: 100%;
+                }
 
 
 
-       </style>
+            </style>
 
 
-    <input type='submit' class="btn btn-lg btn-primary run-button" value='Create Post' />
+            <input type='submit' class="btn btn-lg btn-primary run-button" value='Create Post' />
 
-</form>
+        </form>
+    {% endif %}
 
     
 

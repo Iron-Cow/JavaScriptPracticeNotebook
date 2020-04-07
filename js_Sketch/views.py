@@ -123,4 +123,4 @@ def delete_problem(request, problem_id: int):
 
 
 def js_editor(request):
-    return render(request, 'sketch/codemirrortest.html')
+    return render(request, 'sketch/code_editor.html')

@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import *
+from .models import Feedback, Usersetup
 
-# Register your models here.
-# admin.site.register(Problem)
-# admin.site.register(Language)
+
+admin.site.register(Feedback)
+admin.site.register(Usersetup)

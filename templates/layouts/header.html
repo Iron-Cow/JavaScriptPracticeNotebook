@@ -1,20 +1,32 @@
 <header class="masthead mb-auto">
     <div class="inner">
-    <h3 class="masthead-brand">JS Sketch</h3>
+    <h3 class="masthead-brand">
+        <a href="/"
+            style="
+                background-image: linear-gradient(to top, yellow, blue);
+                -webkit-background-clip: text;
+                -moz-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                text-shadow: 1px 1px transparent, 1px 1px 10px silver
+           ">
+        JS Sketch
+        </a>
+    </h3>
+
         <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link" href="/">Home</a>
-            <a class="nav-link" href="/problems_list">Problems</a>
-            <a class="nav-link" href="/js_editor">Editor</a>
+            <a class="nav-link text-success" href="/problems_list">Problems</a>
+            <a class="nav-link text-primary" href="/js_editor">Editor</a>
 
                  {% if user.is_authenticated %}
-                <a class="nav-link" href="/account/profile">
+                <a class="nav-link text-danger" href="/account/profile">
                     {{ user.username }}</a>
                     <span class="nav-link" >/</span>
-                <a class="nav-link" href="/account/logout">Logout</a>
+                <a class="nav-link text-warning" href="/account/logout">Logout</a>
                  {% else %}
-            <a class="nav-link" href="/account/signup">Sign Up</a>
+            <a class="nav-link text-danger" href="/account/signup">Sign Up</a>
             <span class="nav-link" >/</span>
-            <a class="nav-link" href="/account/signin">Sign In</a>
+            <a class="nav-link text-warning" href="/account/signin">Sign In</a>
                  {% endif %}
         </nav>
     </div>
