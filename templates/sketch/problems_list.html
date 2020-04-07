@@ -57,6 +57,7 @@
     {% if user.is_authenticated %}
         <button class="btn btn-secondary" data-toggle="collapse" data-target=".multi-collapse" role="button" aria-expanded="false" aria-controls="form-for-code problemslist">Add code</button>
         <form class="collapse multi-collapse" id="form-for-code" method="post" enctype="multipart/form-data">{% csrf_token %}
+            <small class="text-warning">Your quota for posts today {{ post_quote_left }}/{{ quote }} left</small>
             {% for field in form%}
                 <h4>
                     {{ field.label_tag }}

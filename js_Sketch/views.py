@@ -4,6 +4,8 @@ from .models import Problem, Language
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib import messages
+from account.models import Usersetup
+from django.utils.timezone import datetime
 
 
 def index(request):
@@ -11,9 +13,19 @@ def index(request):
 
 
 def problems_list(request):
-    print(request.user.get_group_permissions())
+    # print(request.user.get_group_permissions())
     context = dict()
     all_tasks = Problem.objects.all()
+    SETTINGS = Usersetup.objects.get(id=0)
+    post_quote_left = 0
+    quote = SETTINGS.unregistered_user_daily_posts
+    if request.user.is_authenticated:
+        user_today_posts_count = Problem.objects.filter(user=request.user, timestamp__date=datetime.today().date()).count()
+        quote = SETTINGS.registered_user_daily_posts
+        post_quote_left = quote - user_today_posts_count
+    context['post_quote_left'] = post_quote_left
+    context['quote'] = quote
+
     if request.method == "GET":
         query = request.GET.get("q")
         if query:
@@ -47,12 +59,15 @@ def problems_list(request):
     elif request.method == "POST":
         if not request.user.is_authenticated:
             messages.info(request, "No access")
-        form = ProblemForm(request.POST)
-        context['form'] = form
-        task = form.save(commit=False)
-        task.user = request.user
-        task.save()
-        messages.info(request, "Created successfully")
+        elif post_quote_left <= 0:
+            messages.info(request, "Post NOT saved. Quota reached")
+        else:
+            form = ProblemForm(request.POST)
+            context['form'] = form
+            task = form.save(commit=False)
+            task.user = request.user
+            task.save()
+            messages.info(request, "Created successfully")
         return redirect(f'/problems_list')
 
 
