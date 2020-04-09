@@ -25,12 +25,57 @@
 {#    Feedback#}
     <h3>Leave feedback</h3>
 {#    Buttons#}
-    <button class="btn btn-success m-1" >Feedback</button>
+    <button class="btn btn-success mr-1" data-toggle="collapse" data-target="#my_feedbacks" type="button" aria-expanded="false" aria-controls="my_feedbacks">My feedbacks</button>
+    <button class="btn btn-success mr-1" data-toggle="collapse" data-target="#feedbacks" type="button" aria-expanded="false" aria-controls="feedbacks">Leave feedback</button>
     <a class="btn btn-success m-1" href="/problems_list?q={{ user.username }}">My code</a>
     {% if user.is_superuser %}
-        <a class="btn btn-success m-1" >Feedback list</a>
-        <a class="btn btn-success m-1" href="/account/users">Users <span style="color: orangered">({{ new_users.count }})</span></a>
+        <button class="btn btn-success m-1" data-toggle="collapse" data-target="#feedbacks" type="button" aria-expanded="false" aria-controls="feedbacks">
+            Feedback list
+            <span style="color: orangered">({{ new_feedbacks.count }})</span>
+        </button>
+        <a class="btn btn-success m-1"  href="/account/users">Users <span style="color: orangered">({{ new_users.count }})</span></a>
     {% endif %}
+
+
+{#    Feedback submission form (collapsed)#}
+        <div id="feedbacks" class="collapse">
+            <form id="form-for-code" method="post" enctype="multipart/form-data">{% csrf_token %}
+            <small class="text-warning">Your feedback letters left - {{ feedback_quote_left }}/{{ quote }}</small>
+            {% for field in form%}
+                <h4>
+                    {{ field.label_tag }}
+                    <p>{{ field }}</p>
+                </h4>
+            {% endfor %}
+            <style>
+                #id_title{
+                    width: 100%;
+                }
+                #id_content{
+                    width: 100%;
+                }
+            </style>
+
+
+            <input type='submit' class="btn btn-lg btn-primary run-button" value='Create Post' />
+
+        </form>
+    </div>
+
+{#        My_feedbacks#}
+        <div class="collapse" id="my_feedbacks">
+            {% for feedback in user_feedbacks%}
+                <button class="btn {% if feedback.status == 'Answered' %}btn-primary{% else %}btn-secondary{% endif %} my-1" data-toggle="collapse" data-target="#feedback-{{ feedback.id }}" type="button" aria-expanded="false" aria-controls="feedback-{{ feedback.id }}">{{ feedback.id }}. {{ feedback.title }} </button> - {{ feedback.status }}
+                <div class="collapse" id="feedback-{{ feedback.id }}">
+                    <a class="btn btn-danger m-1" href="/account/detete_feedback/{{ feedback.id }}">Delete Feedback</a>
+                    <h4>Your text:</h4>
+                    <p>{{ feedback.content }}</p>
+                    <h4>Admin answer:</h4>
+
+                    <p>{{ feedback.answer }}</p>
+                </div><br>
+            {% endfor %}
+        </div>
 
 {% endblock content %}
 

@@ -21,7 +21,10 @@ def problems_list(request):
     quote = SETTINGS.unregistered_user_daily_posts
     if request.user.is_authenticated:
         user_today_posts_count = Problem.objects.filter(user=request.user, timestamp__date=datetime.today().date()).count()
-        quote = SETTINGS.registered_user_daily_posts
+        if request.user.is_active:
+            quote = SETTINGS.registered_user_daily_posts
+        else:
+            quote = SETTINGS.unregistered_user_daily_posts
         post_quote_left = quote - user_today_posts_count
     context['post_quote_left'] = post_quote_left
     context['quote'] = quote

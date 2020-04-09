@@ -2,10 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a288f104-cbd8-4f34-89d3-8b2321c344fd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/account/admin_feedback_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js_Sketch/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/js_Sketch/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/sketch/problems_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sketch/problems_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/profile.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +42,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/sketch" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -107,7 +112,8 @@
       <workItem from="1585746372442" duration="4547000" />
       <workItem from="1585826386304" duration="17014000" />
       <workItem from="1585921672071" duration="1032000" />
-      <workItem from="1585923535509" duration="52988000" />
+      <workItem from="1585923535509" duration="62448000" />
+      <workItem from="1586440628856" duration="15385000" />
     </task>
     <servers />
   </component>

@@ -1,0 +1,87 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}
+    Feedback list
+{% endblock title %}
+{% block content %}
+
+{#    <div class="form-check">#}
+{#    <input class="form-check-input" type="checkbox" value="Apple" id="apple" name="fruits">#}
+{#    <label class="form-check-label" for="apple">Apple</label>#}
+{#    <label class="form-check-label" for="apple">Banana</label>#}
+{#  </div>#}
+
+
+
+
+    <form class="form-group" method="GET" action="">
+        <input type="checkbox" checked name="Pending" id="Pending" value="True">
+        <label for="Pending">Pending</label>
+        <input type="checkbox" checked name="Answered" id="Answered" value="True">
+        <label for="Answered">Answered</label>
+        <input type="checkbox" checked name="Deleted by user" id="Deleted" value="True">
+        <label for="Deleted">Deleted</label>
+        <input type="checkbox" checked name="Ignored" id="Ignored" value="True">
+        <label for="Ignore">Ignore</label>
+        <input class="form-control" type="text" name="q" placeholder="Search feedback" value="{{ request.GET.q }}">
+        <input id="filter-feedbacks" class="btn btn-success m-1" type="submit" value="Search">
+        <script>
+            $("input[type=checkbox]").click(function () {
+                if ($(this).attr("checked") === 'checked'){
+                    $(this).removeAttr("checked");
+                    $(this).val("False");
+                }else{
+                    $(this).attr("checked", "checked");
+                    $(this).val("True");
+                }
+                 alert($(this).attr("checked") === 'checked')
+
+            })
+        </script>
+    </form><br>
+
+    <div class="m-1">
+        {% for feedback in all_feedbacks %}
+            <button class="btn
+            {% if feedback.status == 'Pending'%}
+                btn-primary
+            {% elif feedback.status == 'Deleted by user'%}
+                btn-warning
+            {% elif feedback.status == 'Answered'%}
+                btn-success
+            {% elif feedback.status == 'Ignored'%}
+                btn-secondary
+            {% endif %}
+            my-1 w-100"
+                    data-toggle="collapse"
+                    data-target="#feedback-{{ feedback.id }}"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="feedback-{{ feedback.id }}">
+
+                {{ feedback }}
+            </button>
+            <div class="collapse" id="feedback-{{ feedback.id }}">
+                <a class="btn btn-danger m-1" href="/account/delete_feedback_totally/{{ feedback.id }}">Delete Feedback</a>
+               {% if feedback.status == "Pending" %}
+                   <a class="btn btn-secondary m-1" href="/account/ignore_feedback/{{ feedback.id }}">Ignore Feedback</a>
+               {% endif %}
+                    <h4>{{ feedback.user.username }} text:</h4>
+                    <p>{{ feedback.content }}</p>
+                    <h4>Admin answer:</h4>
+                     {% if not feedback.answer and feedback.status == "Pending" %}
+                        <form id="form-for-code" method="post" enctype="multipart/form-data" action="/account/feedback_answer/{{ feedback.id }}">{% csrf_token %}
+                            <textarea class="w-100 form-select" name="answer-{{ feedback.id }}"></textarea>
+
+            <input type='submit' class="btn btn-lg btn-primary run-button" value='answer' />
+
+        </form>
+                     {% else %}
+                         <p>{{ feedback.adminanswer }}</p>
+                     {% endif %}
+            </div>
+            <br>
+        {% endfor %}
+    </div>
+{% endblock content %}

@@ -17,6 +17,9 @@ class Feedback(models.Model):
     timestamp = models.DateField(auto_now_add=True)
     status = models.CharField(max_length=32, choices=StatusChoice.choices, default=StatusChoice.PENDING)
 
+    class Meta:
+        ordering = ['timestamp']
+
     def __str__(self):
         return f'{self.id}. {self.title} ({self.user.username}/{self.timestamp})'
 
