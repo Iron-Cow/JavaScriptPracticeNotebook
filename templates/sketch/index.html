@@ -5,9 +5,83 @@
     Main
 {% endblock title %}
 {% block content %}
- <h1 class="cover-heading">Cover your page.</h1>
-    <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-    <p class="lead">
-      <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
-    </p>
+
+    <h1 class="cover-heading">Welcome</h1>
+    <p class="lead">It is your helper in coding life. Please check out more information about the website below:</p>
+
+
+    <div class="accordion" id="accordionExample">
+        <div class="card">
+            <div class="card-header bg-dark" id="headingOne">
+                <h2 class="mb-0">
+                    <button class="btn btn-primary w-100" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Website opportunities
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body bg-dark">
+                   You can note your code in <a class="text-primary" href="/problems_list"> problems section</a> with different languages. (Only for registered users)
+                    <br>
+                    <a class="text-primary" href="/js_editor">Front End</a> tranings available without sign up.
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header bg-dark" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-primary w-100 collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Rules and permissions
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body bg-dark">
+                    For unregistered users available 'read-only' content. It is free to use, spectate, enjoy😙
+                    <br>
+                    You can also <a class="text-danger" href="">sign up</a> for free.
+                    As I didn't put a lot of energy into security - registered users should be confirmed by admin manualy.
+                    <br>
+                    Confirmed and not confirmed users have different permissions (absolute and dayly). It is dynamically
+                    changed variables. All restrictions will be shown in corresponding areas.
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header bg-dark" id="headingThree">
+                <h2 class="mb-0">
+                    <button class="btn btn-primary w-100 collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Feedback
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body bg-dark">
+                    Each registered user can send feedback, improve offers or questions from profile section. <br>
+                    Number of new feedback is also limited, depending on user status.
+                </div>
+            </div>
+        </div>
+            <div class="card">
+            <div class="card-header bg-dark" id="headingFour">
+                <h2 class="mb-0">
+                    <button class="btn btn-primary w-100 collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        Privacy policy
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body bg-dark">
+                    Data collection on this website used only for registration and code submission. <br>
+                    It is email, username, password (hashed, without saving raw), feedback to administration and posts with code.
+                    <br> If you with to delete your submitted data - please contact Admin via your profile tab.
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 {% endblock content %}

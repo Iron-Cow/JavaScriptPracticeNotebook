@@ -29,10 +29,10 @@
     <button class="btn btn-success mr-1" data-toggle="collapse" data-target="#feedbacks" type="button" aria-expanded="false" aria-controls="feedbacks">Leave feedback</button>
     <a class="btn btn-success m-1" href="/problems_list?q={{ user.username }}">My code</a>
     {% if user.is_superuser %}
-        <button class="btn btn-success m-1" data-toggle="collapse" data-target="#feedbacks" type="button" aria-expanded="false" aria-controls="feedbacks">
+        <a href="/account/admin_feedback_list" class="btn btn-success m-1" data-toggle="collapse" data-target="#feedbacks" type="button" aria-expanded="false" aria-controls="feedbacks">
             Feedback list
             <span style="color: orangered">({{ new_feedbacks.count }})</span>
-        </button>
+        </a>
         <a class="btn btn-success m-1"  href="/account/users">Users <span style="color: orangered">({{ new_users.count }})</span></a>
     {% endif %}
 
