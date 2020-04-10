@@ -25,7 +25,7 @@ SECRET_KEY = ')6fbx^3-r$v47y9)op74(vaw2=z8q!a^-to7ff#&$g69bhmr1y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["js-editor.herokuapp.com/"]
+ALLOWED_HOSTS = ["js-editor.herokuapp.com"]
 
 
 # Application definition
