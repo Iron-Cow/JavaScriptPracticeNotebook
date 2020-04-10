@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a288f104-cbd8-4f34-89d3-8b2321c344fd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/static/img/iconfinder.ico" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/account/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/layouts/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layouts/base.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,21 +36,22 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/img" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/templates/sketch" />
-      <recent name="$PROJECT_DIR$/static" />
-      <recent name="$PROJECT_DIR$/static/js/sketch" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/templates" />
       <recent name="$PROJECT_DIR$/static/css" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/img" />
+      <recent name="$PROJECT_DIR$/templates/sketch" />
+      <recent name="$PROJECT_DIR$/static" />
+      <recent name="$PROJECT_DIR$/static/js/sketch" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -106,7 +108,7 @@
       <workItem from="1585826386304" duration="17014000" />
       <workItem from="1585921672071" duration="1032000" />
       <workItem from="1585923535509" duration="62448000" />
-      <workItem from="1586440628856" duration="20351000" />
+      <workItem from="1586440628856" duration="21352000" />
     </task>
     <servers />
   </component>
