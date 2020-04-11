@@ -94,7 +94,7 @@ def profile(request):
         messages.info(request, 'Log in first, please')
         active()
         return redirect('/')
-    SETTINGS = Usersetup.objects.get(id=0)
+    SETTINGS = Usersetup.objects.get(id=1)
     user_feedbacks = Feedback.objects.filter(user=request.user).exclude(status__in=("Deleted by user", "Ignored")).order_by('-id')
     data = dict()
     if request.user.is_active:

@@ -16,7 +16,7 @@ def problems_list(request):
     # print(request.user.get_group_permissions())
     context = dict()
     all_tasks = Problem.objects.all()
-    SETTINGS = Usersetup.objects.get(id=0)
+    SETTINGS = Usersetup.objects.get(id=1)
     post_quote_left = 0
     quote = SETTINGS.unregistered_user_daily_posts
     if request.user.is_authenticated:
